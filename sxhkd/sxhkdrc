@@ -132,3 +132,17 @@ super + Print
 
 alt + Print
         owo -gs
+
+#
+# Media keys
+#
+
+XF86AudioMute
+        amixer -q sset Master toggle
+
+XF86AudioLowerVolume
+        amixer -q sset Master 10%-
+
+XF86AudioRaiseVolume
+        amixer -q sset Master 10%+
+
