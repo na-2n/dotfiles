@@ -5,11 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-<<<<<<< HEAD
 static char *font = "Meslo LG S:pixelsize=16:antialias=true:autohint=true";
-=======
-static char *font = "Noto Mono:pixelsize=16:antialias=true:autohint=true";
->>>>>>> 6c7b4639be43341b5dee295ef97b67c332a428f9
 static int borderpx = 2;
 
 /*
@@ -88,7 +84,6 @@ unsigned int tabspaces = 4;
 
 /* Terminal colors (16 first used in escape sequence) */
 const char *colorname[] = {
-<<<<<<< HEAD
 	/* 8 normal colors */
 	"#000000",
 	"#CD3131",
@@ -114,34 +109,6 @@ const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-=======
-        /* 8 normal colors */
-        "#000000",
-        "#CD3131",
-        "#0DBC79",
-        "#E5E510",
-        "#2472C8",
-        "#BC3FBC",
-        "#11A8CD",
-        "#E5E5E5",
-
-        /* 8 bright colors */
-        "#636363",
-        "#F14C4C",
-        "#23D18B",
-        "#377F99",
-        "#3B8EEA",
-        "#C869C8",
-        "#27A5C4",
-        "#FDF6E3",
-
-        [255] = 0,
-
-        /* more colors can be added after 255 to use with DefaultXX */
-        "#cccccc",
-        "#555555",
-        "black",
->>>>>>> 6c7b4639be43341b5dee295ef97b67c332a428f9
 };
 
 
@@ -150,11 +117,7 @@ const char *colorname[] = {
  * foreground, background, cursor, reverse cursor
  */
 unsigned int defaultfg = 7;
-<<<<<<< HEAD
 unsigned int defaultbg = 233;
-=======
-unsigned int defaultbg = 233; 
->>>>>>> 6c7b4639be43341b5dee295ef97b67c332a428f9
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
