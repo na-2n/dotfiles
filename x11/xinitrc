@@ -50,6 +50,6 @@ fi
 
 sxhkd &
 compton &
-feh --bg-fill ~/Pictures/background.jpg &
+feh --bg-fill ~/Pictures/background.png &
 polybar watch &
 exec bspwm

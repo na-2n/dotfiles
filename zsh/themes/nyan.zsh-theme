@@ -1,10 +1,10 @@
 # vim:ft=zsh
 
-PRIMARY_COLOR="203"
-SECONDARY_COLOR="209"
+PRIMARY_COLOR="236"
+SECONDARY_COLOR="239"
 
-OK_COLOR="83" #"34"
-WARN_COLOR="227"
+OK_COLOR="2"
+WARN_COLOR="184"
 
 git_prompt () {
     autoload -Uz vcs_info
