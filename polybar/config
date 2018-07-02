@@ -1,76 +1,180 @@
 ; vim:ft=dosini
-;
-;
-;   ______    ___   ____  _     
-;  |      |  /  _] /    || |    
-;  |      | /  [_ |  o  || |    
-;  |_|  |_||    _]|     || |___ 
-;    |  |  |   [_ |  _  ||     |
-;    |  |  |     ||  |  ||     |
-;    |__|  |_____||__|__||_____|                            
 
-[module/bspwm]
+[module/workspaces]
 type = internal/bspwm
-pin-workspaces = false
-inline-mode = false
-enable-click = true
-enable-scroll = true
-reverse-scroll = false
-fuzzy-match = true
-workspace-label = %index%
-label-monitor = %name%
-label-mode-padding = 4
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+pin-workspaces = true
+
+ws-icon-0 = discord;
+ws-icon-1 = terminal;
+ws-icon-2 = firefox;
+ws-icon-3 = code;
+ws-icon-4 = music;
+ws-icon-5 = matrix;
+ws-icon-default = 
+
 format = <label-state>
-format-background = #303136
-format-prefix = "    "
-format-prefix-foreground = #1a1a1a
-format-prefix-background = #5E8D87
-format-prefix-padding = 0
-label-focused = %index%: %name%
-label-focused-foreground = #bfbfbf
-label-focused-padding = 3
 
-label-empty = %index%: %name%
-label-empty-foreground = #8c8c8c
-label-empty-padding = 3
+label-empty = %icon%
+label-empty-padding = 4
 
-label-occupied = %index%: %name%
-label-occupied-foreground = #8c8c8c
-label-occupied-padding = 3
+label-dimmed = %icon%
+label-dimmed-padding = 4
 
-[module/cpu]
-type = internal/cpu
-interval = 0.5
-format-cpu = <format-prefix> <label>
-format-prefix = "    "
-format-prefix-background = #3c3e44
-label-background = #303136
-label = "%percentage%%"
-label-padding = 2
-format-prefix-padding = 0
-format-prefix-foreground = #bfbfbf
+label-occupied = %icon%
+label-occupied-underline = #a6ffffff
+label-occupied-padding = 4
+
+label-urgent = %icon%
+label-urgent-padding = 4
+label-urgent-background = #995641
+
+label-focused = %icon%
+label-focused-overline = #30313a
+label-focused-background = #30313a
+label-focused-underline = #fff
+label-focused-padding = 4
+
+
+[module/window]
+type = internal/xwindow
+
+format = <label>
+
+label =   %title%
+label-maxlen = 50
+label-underline = #fff
+label-margin-left = 8
+
+
+[module/mpd]
+type = internal/mpd
+
+label-song =   %artist% - %title%
+label-song-maxlen = 100
+label-song-margin = 4
+label-song-underline = #fff
+
+
+[module/weather]
+type = custom/script
+
+exec = ~/.config/polybar/weather.sh
+
+interval = 600
+
+label-font = 5
+label-underline = #fff
+label-margin = 4
+
+
+[module/openvpn]
+type = custom/script
+
+exec = ~/.config/polybar/openvpn.sh
+
+interval = 100
+
+label-underline = #fff
+label-margin = 4
+
+
+[module/wifi]
+type = internal/network
+
+interface = wlp2s0
+
+interval = 3.0
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+format-packetloss = <label-packetloss>
+
+label-connected =   %essid%
+label-connected-underline = #fff
+label-connected-margin = 4
+
+label-disconnected =   disconnected
+label-disconnected-underline = #fff
+label-disconnected-margin = 4
+
+label-packetloss =   %essid%
+label-packetloss-underline = #fff
+label-packetloss-margin = 4
+
+
+[module/volume]
+type = internal/volume
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+master-mixer = Master
+speaker-mixer = Speaker
+headphone-mixer = Headphone
+
+headphone-id = 19
+
+mapped = true
+
+format-volume = <ramp-volume>  <label-volume>
+format-volume-underline = #fff
+format-volume-margin = 4
+
+format-muted = <label-muted>
+format-muted-underline = #fff
+format-muted-margin = 4
+
+label-muted =   muted
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+
+[module/backlight]
+type = internal/xbacklight
+
+enable-scroll = true
+
+format = <label>
+format-underline = #fff
+format-margin = 4
+
+label =   %percentage%%
+
 
 [module/battery]
 type = internal/battery
-poll-interval = 1
+
+full-at = 98
+
 battery = BAT0
 adapter = ADP0
 
-format-charging = "  <animation-charging>  <label-charging>"
-format-charging-background = #3c3e44
-format-charging-padding = 2
+poll-interval = 5
 
-format-discharging = "  <ramp-capacity>  <label-discharging>"
-format-discharging-background = #3c3e44
-format-discharging-padding = 2
+time-format = %H:%M
 
-label-charging = %percentage%%
-label-charging-padding = 2
-label-charging-background = #303136
+format-charging = <label-charging>
+format-charging-underline = #fff
+format-charging-margin = 4
+
+format-discharging = <ramp-capacity>  <label-discharging>
+format-discharging-underline = #fff
+format-discharging-margin = 4
+
+format-full = <ramp-capacity>  <label-full>
+format-full-underline = #fff
+format-full-margin = 4
+
+label-charging =   %percentage%%
 
 label-discharging = %percentage%%
-label-discharging-padding = 2
-label-discharging-background = #303136
 
 label-full = %percentage%%
 
@@ -80,135 +184,73 @@ ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+bar-capacity-width = 4
 
-animation-carging-framerate = 750
 
-[module/xwindow]
-type = internal/xwindow
-format-cpu = <format-prefix> <label>
-format-prefix = "    "
-format-prefix-background = #3c3e44
-label = %title:0:75:...%
-label-background = #303136
-label-padding = 2
-label-foreground = #bfbfbf
+[module/time]
+type = internal/date
+
+interval = 1.0
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+label =   %time%
+label-underline = #fff
+label-margin = 4
+
 
 [module/date]
 type = internal/date
+
 interval = 1.0
-date = %l:%M %p
+
+date = %d-%m-%Y%
 date-alt = %A, %d %B %Y
-time-alt = %l:%M:%S
-label = "%date%"
-label-background = #5E8D87
-label-foreground = #1a1a1a
-label-padding = 2
 
-[module/date2]
-type = internal/date
-interval = 1.0
+label =   %date%
+label-underline = #fff
+label-margin = 4
 
-format-date = <label>
-date = "%d/%b"
-label = "%date%"
-label-background = #303136
-label-foreground = #bfbfbf
-label-padding = 2
 
-[module/volume]
-type = internal/volume
+[module/powermenu]
+type = custom/menu
 
-format-volume = <ramp-volume> <label-volume>
-format-volume-background = #3c3e44
-ramp-volume-0 = "     "
-ramp-volume-1 = "     "
-ramp-volume-2 = "     "
-format-volume-padding = 0
-label-volume = "%percentage%%"
-label-volume-background = #303136
-label-volume-padding = 2
-format-volume-foreground = #bfbfbf
-mapping = true
+label-open = 
+label-open-padding = 4
 
-[module/memory]
-type = internal/memory
-interval = 0.5
-format-cpu = <format-prefix> <label>
-format-prefix = "    "
-format-prefix-background = #3c3e44
-label-background = #303136
-label = "%percentage_used%%"
-label-padding = 2
-format-prefix-padding = 0
-format-prefix-foreground = #bfbfbf
+label-close = 
+label-close-padding-left = 4
+label-close-padding-right = 2
 
-; Not used in this bar.
-[module/volramp]
-type = internal/volume
+menu-0-0 = Shutdown
+menu-0-0-exec = sudo poweroff
+menu-0-0-margin = 2
+menu-0-0-underline = #c93c3c
 
-format-volume = <bar-volume>
-format-volume-padding = 1
-bar-volume-width = 13
-bar-volume-height = 13
-bar-volume-foreground-0 = #752a2a
-bar-volume-foreground-1 = #752a2a
-bar-volume-gradient = false
-bar-volume-indicator = 
-bar-volume-indicator-foreground = #404040
-format-muted-prefix = " "
-format-muted-foreground = #752a2a
-label-muted = Muted
+menu-0-1 = Reboot
+menu-0-1-exec = sudo reboot
+menu-0-1-margin = 2
+menu-0-1-underline = #bbc93c
 
-bar-volume-indicator-font = 3
-bar-volume-fill = ─
-bar-volume-fill-font = 3
-bar-volume-empty = ─
-bar-volume-empty-foreground = #404040
-bar-volume-empty-font = 3
 
-[bar/watch]
-monitor = eDP1
-monitor-strict = false
+[bar/nyan]
 bottom = false
-width = 100%
-height = 20
-fixed-center = true
-offset-x = 0
-offset-y = 0
-background = #242529
-foreground = #ccc
-radius = 0.0
-line-size = 1
-line-color = #242529
-border-size = 0
-border-bottom-size = 8
-border-top-size = 8
-border-color = #242529
-padding = 3
-module-margin = 2
-override-redirect = false
-wm-restack = bspwm
-font-0 = NotoSans-Regular:size=10;2
-font-1 = Junicode-Bold:size=10;2
-font-2 = DroidSansGeorgian-Bold:size=10;2
-font-3 = NotoSansMongolian-Bold:size=10;2
-font-4 = DroidSansHebrew-Bold:size=10;2
-font-5 = siji-Bold:size=10;2
-font-6 = FontAwesome5FreeSolid:size=10;3
-font-7 = FontAwesome5FreeRegular:size=10;3
-font-8 = sourcehansansjp:size=11;3
-modules-left = bspwm xwindow
-modules-center =
-modules-right = memory cpu volume battery date2 date
-;border-bottom-size = 2
-border-bottom-color = #242529
+height = 30
 
-[settings]
-throttle-output = 5
-throttle-output-for = 10
-throttle-input-for = 30
+fixed-center = true
+
+line-size = 2
+
+background = #232428
+
+font-0 = Noto Sans:style=Regular:size=9;2
+font-1 = FontAwesome5FreeRegular:size=8;2
+font-2 = FontAwesome5FreeSolid:size=8;2
+font-3 = FontAwesome5Brands:size=8;2
+font-4 = Weather Icons:size=8;2
+;font-5 = Twitter Color Emoji:size=8;2
+
+modules-left = workspaces window
+modules-center = mpd
+modules-right = weather wifi backlight battery volume time date
