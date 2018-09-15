@@ -124,14 +124,14 @@ super + {h,j,k,l}
 # OwO
 #
 
-ctrl + Print
-        owo -s
+#ctrl + Print
+#        owo -s
 
-super + Print
-        owo -gr
+#super + Print
+#        owo -gr
 
-alt + Print
-        owo -gs
+#alt + Print
+#        owo -gs
 
 #
 # Media keys

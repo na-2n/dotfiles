@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Meslo LG S:pixelsize=14:antialias=true:autohint=true";
+static char *font = "lemon:pixelsize=20:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -85,24 +85,24 @@ unsigned int tabspaces = 4;
 /* Terminal colors (16 first used in escape sequence) */
 const char *colorname[] = {
 	/* 8 normal colors */
-	"#000000",
-	"#CD3131",
-	"#0DBC79",
-	"#E5E510",
-	"#2472C8",
-	"#BC3FBC",
-	"#11A8CD",
-	"#E5E5E5",
+	"#322931",
+	"#dd464c",
+	"#8fc13e",
+	"#fdcc59",
+	"#1290bf",
+	"#c85e7c",
+	"#149b93",
+	"#b9b5b8",
 
 	/* 8 bright colors */
-	"#636363",
-	"#F14C4C",
-	"#23D18B",
-	"#377F99",
-	"#3B8EEA",
-	"#3B8EEA",
-	"#27A5C4",
-	"#FDF6E3",
+	"#797379",
+	"#dd464c",
+	"#8fc13e",
+	"#fdcc59",
+	"#1290bf",
+	"#c85e7c",
+	"#149b93",
+	"#ffffff",
 
 	[255] = 0,
 
@@ -177,7 +177,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
+	// { TERMMOD,              XK_I,           iso14755,       {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };

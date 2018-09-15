@@ -1,0 +1,16 @@
+{
+  "name": "OwO",
+  "desc": "OwO.Whats-Th.is?",
+  "target": "https://api.awau.moe/upload/pomf?key=<OWO KEY>",
+  "format": "multipart-form-data",
+  "body": [
+    {
+      "__Content-Type": "/%contenttype/",
+      "filename": "/image.%format/",
+      "name": "files[]",
+      "body": "/%imagedata/"
+    }
+  ],
+  "return": ".files.0.url",
+  "return_prepend": "https://%(proxi.is-bad.com|cat.girlsare.life)random/"
+}

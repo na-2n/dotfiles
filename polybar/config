@@ -1,5 +1,9 @@
 ; vim:ft=dosini
 
+[module/blank]
+type = internal/xwindow
+label = " "
+
 [module/workspaces]
 type = internal/bspwm
 
@@ -8,35 +12,34 @@ scroll-down = bspwm-deskprev
 
 pin-workspaces = true
 
-ws-icon-0 = discord;
-ws-icon-1 = terminal;
-ws-icon-2 = firefox;
-ws-icon-3 = code;
-ws-icon-4 = music;
-ws-icon-5 = matrix;
-ws-icon-default = 
+ws-icon-0 = discord;d
+ws-icon-1 = terminal;t
+ws-icon-2 = firefox;f
+ws-icon-3 = code;c
+ws-icon-4 = music;m
+ws-icon-default = w
 
 format = <label-state>
 
 label-empty = %icon%
-label-empty-padding = 4
+label-empty-padding = 1
 
 label-dimmed = %icon%
-label-dimmed-padding = 4
+label-dimmed-padding = 1
 
 label-occupied = %icon%
 label-occupied-underline = #a6ffffff
-label-occupied-padding = 4
+label-occupied-padding = 1
 
 label-urgent = %icon%
-label-urgent-padding = 4
+label-urgent-padding = 1
 label-urgent-background = #995641
 
 label-focused = %icon%
 label-focused-overline = #30313a
 label-focused-background = #30313a
 label-focused-underline = #fff
-label-focused-padding = 4
+label-focused-padding = 1
 
 
 [module/window]
@@ -44,18 +47,18 @@ type = internal/xwindow
 
 format = <label>
 
-label =   %title%
+label = %title%
 label-maxlen = 50
 label-underline = #fff
-label-margin-left = 8
+label-margin-left = 1
 
 
 [module/mpd]
 type = internal/mpd
 
-label-song =   %artist% - %title%
+label-song = NP: %artist% - %title%
 label-song-maxlen = 100
-label-song-margin = 4
+label-song-margin = 1
 label-song-underline = #fff
 
 
@@ -68,7 +71,7 @@ interval = 600
 
 label-font = 5
 label-underline = #fff
-label-margin = 4
+label-margin = 1
 
 
 [module/openvpn]
@@ -79,7 +82,7 @@ exec = ~/.config/polybar/openvpn.sh
 interval = 100
 
 label-underline = #fff
-label-margin = 4
+label-margin = 1
 
 
 [module/wifi]
@@ -93,17 +96,17 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 format-packetloss = <label-packetloss>
 
-label-connected =   %essid%
+label-connected = WIFI: %essid%
 label-connected-underline = #fff
-label-connected-margin = 4
+label-connected-margin = 1
 
-label-disconnected =   disconnected
+label-disconnected = WIFI: * disconnected
 label-disconnected-underline = #fff
-label-disconnected-margin = 4
+label-disconnected-margin = 1
 
-label-packetloss =   %essid%
+label-packetloss = WIFI: ? %essid%
 label-packetloss-underline = #fff
-label-packetloss-margin = 4
+label-packetloss-margin = 1
 
 
 [module/volume]
@@ -121,19 +124,19 @@ headphone-id = 19
 
 mapped = true
 
-format-volume = <ramp-volume>  <label-volume>
+format-volume = VOL: <ramp-volume> <label-volume>
 format-volume-underline = #fff
-format-volume-margin = 4
+format-volume-margin = 1
 
-format-muted = <label-muted>
+format-muted = VOL: <label-muted>
 format-muted-underline = #fff
-format-muted-margin = 4
+format-muted-margin = 1
 
-label-muted =   muted
+label-muted = muted
 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+ramp-volume-0 = ">  "
+ramp-volume-1 = ">> "
+ramp-volume-2 = ">>>"
 
 
 [module/backlight]
@@ -143,9 +146,9 @@ enable-scroll = true
 
 format = <label>
 format-underline = #fff
-format-margin = 4
+format-margin = 1
 
-label =   %percentage%%
+label = BL: %percentage%%
 
 
 [module/battery]
@@ -162,27 +165,21 @@ time-format = %H:%M
 
 format-charging = <label-charging>
 format-charging-underline = #fff
-format-charging-margin = 4
+format-charging-margin = 1
 
-format-discharging = <ramp-capacity>  <label-discharging>
+format-discharging = <label-discharging>
 format-discharging-underline = #fff
-format-discharging-margin = 4
+format-discharging-margin = 1
 
-format-full = <ramp-capacity>  <label-full>
+format-full = <label-full>
 format-full-underline = #fff
-format-full-margin = 4
+format-full-margin = 1
 
-label-charging =   %percentage%%
+label-charging = BAT: + %percentage%%
 
-label-discharging = %percentage%%
+label-discharging = BAT: - %percentage%%
 
-label-full = %percentage%%
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+label-full = BAT: * %percentage%%
 
 bar-capacity-width = 4
 
@@ -195,9 +192,9 @@ interval = 1.0
 time = %H:%M
 time-alt = %H:%M:%S
 
-label =   %time%
+label = %time%
 label-underline = #fff
-label-margin = 4
+label-margin = 1
 
 
 [module/date]
@@ -208,49 +205,39 @@ interval = 1.0
 date = %d-%m-%Y%
 date-alt = %A, %d %B %Y
 
-label =   %date%
+label = %date%
 label-underline = #fff
-label-margin = 4
+label-margin = 1
 
+[bar/shadow]
+height = 30
+width = 1500
 
-[module/powermenu]
-type = custom/menu
+offset-y = 32
+offset-x = 57
 
-label-open = 
-label-open-padding = 4
+backgroud = #000000
 
-label-close = 
-label-close-padding-left = 4
-label-close-padding-right = 2
-
-menu-0-0 = Shutdown
-menu-0-0-exec = sudo poweroff
-menu-0-0-margin = 2
-menu-0-0-underline = #c93c3c
-
-menu-0-1 = Reboot
-menu-0-1-exec = sudo reboot
-menu-0-1-margin = 2
-menu-0-1-underline = #bbc93c
+modules-center = blank
 
 
 [bar/nyan]
 bottom = false
 height = 30
+width = 1500
+
+offset-y = 25
+offset-x = 50
 
 fixed-center = true
 
 line-size = 2
 
-background = #232428
+background = #212121
+; #0c1118
 
-font-0 = Noto Sans:style=Regular:size=9;2
-font-1 = FontAwesome5FreeRegular:size=8;2
-font-2 = FontAwesome5FreeSolid:size=8;2
-font-3 = FontAwesome5Brands:size=8;2
-font-4 = Weather Icons:size=8;2
-;font-5 = Twitter Color Emoji:size=8;2
+font-0 = Lemon:style=Regular:size=12;2:antialias=true:autohint=true
 
 modules-left = workspaces window
-modules-center = mpd
+modules-center =
 modules-right = weather wifi backlight battery volume time date
