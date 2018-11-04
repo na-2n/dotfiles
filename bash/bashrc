@@ -1,0 +1,58 @@
+# .bashrc
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+alias rm='rm -v'
+alias cp='cp -v'
+alias mv='mv -v'
+
+RESET="\001\e[0m\002"
+BOLD="\001\e[1m\002"
+PINK="\001\e[38;5;206m\002"
+WHITE="\001\e[37m\002"
+GREEN="\001\e[32m\002"
+RED="\001\e[31m\002"
+YELLOW="\001\e[33m\002"
+
+exists() {
+    [ -n "$(stat $1 2>/dev/null)" ]
+}
+
+vcs_info() {
+    INFO=""
+
+    if [ -n "$(git rev-parse --is-inside-work-tree 2>/dev/null)" ]; then
+        BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
+        CHANGES="$(git status --porcelain --ignore-submodules 2>/dev/null)"
+
+        if [ -n "$CHANGES" ]; then
+            ADDITIONS="$(git diff --numstat | gawk '{ i += $1 } END { print i }')"
+            DELETIONS="$(git diff --numstat | gawk '{ i += $2 } END { print i }')"
+
+            INFO=" (${YELLOW}${BRANCH}${WHITE})"
+
+            if [ -n "$ADDITIONS" ] && [ "$ADDITIONS" -gt 0 ]; then
+                INFO+=" ${GREEN}+${ADDITIONS}${WHITE}"
+            fi
+
+            if [ -n "$DELETIONS" ] && [ "$DELETIONS" -gt 0 ]; then
+                INFO+=" ${RED}-${DELETIONS}${WHITE}"
+            fi
+        else
+            INFO=" (${GREEN}${BRANCH}${WHITE})"
+        fi
+    fi
+
+    printf "$INFO"
+}
+
+exit_code() {
+    if [ "$?" != 0 ]; then
+        printf "[${RED}$?${WHITE}]"
+    fi
+}
+
+PS1="${BOLD}${WHITE}\$(exit_code) \w\$(vcs_info) ${RESET}${PINK}\$${RESET} "

@@ -1,116 +1,146 @@
 ; vim:ft=dosini
 
-[module/blank]
-type = internal/xwindow
-label = " "
+[colors]
+white = #FFFFFF
+gray = #DEDEDE
+black = #000000
+pink = #F5A9B8
+blue = #5BCEFA
+
+foreground = ${colors.black}
+background = ${colors.white}
+dimmed = ${colors.gray}
+warn = ${colors.pink}
+
+[bar-base]
+height = 30
+
+offset-y = 25
+offset-x = 25
+
+padding = 5
+module-margin = 2.5
+
+fixed-center = true
+
+line-size = 2.5
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+font-0 = Roboto:style=Regular:size=10;2
+font-2 = FontAwesome5Free:style=Solid:size=8;2
+font-1 = FontAwesome5Brands:style=Regular:size=8;2
+
+modules-left = workspaces
+modules-center = window
+
+[bar/laptop]
+inherit = bar-base
+
+monitor = LVDS1
+
+width = 1316
+
+modules-right = wifi brightness battery volume date time
+
+[bar/vga]
+inherit = bar-base
+
+monitor = VGA1
+
+width = ${env:VGA_BAR_WIDTH:1860}
+
+modules-right = wifi battery volume date time
+
+[module/date]
+type = internal/date
+
+date = %A, %B %d
+
+[module/time]
+type = internal/date
+
+time = %H:%M
+
+label = %time%
 
 [module/workspaces]
 type = internal/bspwm
 
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
+ws-icon-0 = discord;
+ws-icon-1 = terminal;
+ws-icon-2 = firefox;
+ws-icon-3 = code;
+ws-icon-4 = music;
+ws-icon-default = 
 
-pin-workspaces = true
+label-focused = " %icon% "
+label-focused-padding = 1
+label-focused-underline = ${colors.foreground}
 
-ws-icon-0 = discord;d
-ws-icon-1 = terminal;t
-ws-icon-2 = firefox;f
-ws-icon-3 = code;c
-ws-icon-4 = music;m
-ws-icon-default = w
-
-format = <label-state>
-
-label-empty = %icon%
-label-empty-padding = 1
-
-label-dimmed = %icon%
-label-dimmed-padding = 1
-
-label-occupied = %icon%
-label-occupied-underline = #a6ffffff
+label-occupied = " %icon% "
 label-occupied-padding = 1
 
-label-urgent = %icon%
+label-empty = " %icon% "
+label-empty-padding = 1
+label-empty-foreground = ${colors.dimmed}
+
+label-urgent = " %icon% "
 label-urgent-padding = 1
-label-urgent-background = #995641
+label-urgent-background = ${colors.warn}
 
-label-focused = %icon%
-label-focused-overline = #30313a
-label-focused-background = #30313a
-label-focused-underline = #fff
-label-focused-padding = 1
+[module/brightness]
+type = internal/xbacklight
 
+format =   <label>
 
 [module/window]
 type = internal/xwindow
 
-format = <label>
-
-label = %title%
 label-maxlen = 50
-label-underline = #fff
-label-margin-left = 1
 
+[module/battery]
+type = internal/battery
 
-[module/mpd]
-type = internal/mpd
+battery = BAT0
+adapter = AC
 
-label-song = NP: %artist% - %title%
-label-song-maxlen = 100
-label-song-margin = 1
-label-song-underline = #fff
+format-charging = <animation-charging>  <label-charging>
 
+format-discharging = <ramp-capacity>  <label-discharging>
 
-[module/weather]
-type = custom/script
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 
-exec = ~/.config/polybar/weather.sh
-
-interval = 600
-
-label-font = 5
-label-underline = #fff
-label-margin = 1
-
-
-[module/openvpn]
-type = custom/script
-
-exec = ~/.config/polybar/openvpn.sh
-
-interval = 100
-
-label-underline = #fff
-label-margin = 1
-
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
 [module/wifi]
 type = internal/network
 
-interface = wlp2s0
+interface = wlp3s0
 
-interval = 3.0
+format-connected =   <label-connected>
 
-format-connected = <label-connected>
-format-disconnected = <label-disconnected>
-format-packetloss = <label-packetloss>
+format-packetloss =   <label-packetloss>
 
-label-connected = WIFI: %essid%
-label-connected-underline = #fff
-label-connected-margin = 1
+format-disconnected =   <label-disconnected>
 
-label-disconnected = WIFI: * disconnected
-label-disconnected-underline = #fff
-label-disconnected-margin = 1
+label-connected = %essid%
 
-label-packetloss = WIFI: ? %essid%
-label-packetloss-underline = #fff
-label-packetloss-margin = 1
+label-packetloss = %essid%
 
+label-disconnected = Disconnected
 
 [module/volume]
-type = internal/volume
+type = internal/pulseaudio
 
 master-soundcard = default
 speaker-soundcard = default
@@ -124,120 +154,10 @@ headphone-id = 19
 
 mapped = true
 
-format-volume = VOL: <ramp-volume> <label-volume>
-format-volume-underline = #fff
-format-volume-margin = 1
+format-volume = <ramp-volume>  <label-volume>
 
-format-muted = VOL: <label-muted>
-format-muted-underline = #fff
-format-muted-margin = 1
+format-muted =   <label-muted>
 
-label-muted = muted
-
-ramp-volume-0 = ">  "
-ramp-volume-1 = ">> "
-ramp-volume-2 = ">>>"
-
-
-[module/backlight]
-type = internal/xbacklight
-
-enable-scroll = true
-
-format = <label>
-format-underline = #fff
-format-margin = 1
-
-label = BL: %percentage%%
-
-
-[module/battery]
-type = internal/battery
-
-full-at = 98
-
-battery = BAT0
-adapter = ADP0
-
-poll-interval = 5
-
-time-format = %H:%M
-
-format-charging = <label-charging>
-format-charging-underline = #fff
-format-charging-margin = 1
-
-format-discharging = <label-discharging>
-format-discharging-underline = #fff
-format-discharging-margin = 1
-
-format-full = <label-full>
-format-full-underline = #fff
-format-full-margin = 1
-
-label-charging = BAT: + %percentage%%
-
-label-discharging = BAT: - %percentage%%
-
-label-full = BAT: * %percentage%%
-
-bar-capacity-width = 4
-
-
-[module/time]
-type = internal/date
-
-interval = 1.0
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-label = %time%
-label-underline = #fff
-label-margin = 1
-
-
-[module/date]
-type = internal/date
-
-interval = 1.0
-
-date = %d-%m-%Y%
-date-alt = %A, %d %B %Y
-
-label = %date%
-label-underline = #fff
-label-margin = 1
-
-[bar/shadow]
-height = 30
-width = 1500
-
-offset-y = 32
-offset-x = 57
-
-backgroud = #000000
-
-modules-center = blank
-
-
-[bar/nyan]
-bottom = false
-height = 30
-width = 1500
-
-offset-y = 25
-offset-x = 50
-
-fixed-center = true
-
-line-size = 2
-
-background = #212121
-; #0c1118
-
-font-0 = Lemon:style=Regular:size=12;2:antialias=true:autohint=true
-
-modules-left = workspaces window
-modules-center =
-modules-right = weather wifi backlight battery volume time date
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 

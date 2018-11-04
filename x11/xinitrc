@@ -50,11 +50,7 @@ fi
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_QPA_PLATFORMTHEME=qt5ct
-export JAVA_HOME=/usr/lib/jvm/openjdk-1.8.0_182/
+export VGA1_STATUS="$(xrandr | grep VGA1 | gawk '{ print $2 }')"
+export VGA1_BAR_WIDTH="$(xrandr | grep VGA1 | gawk '{ split($3, arr, "x"); print arr[1] - 50 }')"
 
-sxhkd &
-polybar -r shadow &
-polybar -r nyan &
-compton &
-feh --bg-fill ~/Pictures/background2.png &
 exec bspwm
