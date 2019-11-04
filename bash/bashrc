@@ -3,6 +3,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+shopt -s globstar
+
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 alias rm='rm -v'
@@ -56,3 +58,6 @@ exit_code() {
 }
 
 PS1="${BOLD}${WHITE}\$(exit_code) \w\$(vcs_info) ${RESET}${PINK}\$${RESET} "
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

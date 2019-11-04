@@ -44,8 +44,6 @@ if dein#load_state('~/.vim/bundle/')
 endif
 
 let g:deoplete#enable_at_startup = 1
-"let g:deoplete#sources#rust#racer_binary='/home/yui/.cargo/bin/racer'
-"let g:deoplete#sources#rust#rust_source_path='/home/yui/rust/src'
 let python_highlight_all = 1
 let g:deoplete#sources#jedi#python_path='/usr/bin/python3.6'
 let g:ale_linters = { 'cpp': ['cppcheck', 'cpplint', 'g++'], 'python': ['flake8'], 'typescript': ['tslint'] }
@@ -64,3 +62,4 @@ colorscheme paramount
 set background=dark
 filetype plugin indent on
 syntax enable
+
