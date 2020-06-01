@@ -1,0 +1,18 @@
+#!/bin/sh
+
+wid=$1
+class=$2
+instance=$3
+consequences=$4
+
+case "$class" in
+    jetbrains-rider)
+        title=$(xtitle "$wid")
+
+        case "$title" in
+            win0)
+                echo "state=floating"
+                ;;
+        esac
+        ;;
+esac
