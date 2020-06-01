@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Meslo LG M:size=10:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "Meslo LG M:pixelsize=15:antialias=true:autohint=true";
+static int borderpx = 30;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -42,7 +42,7 @@ static unsigned int tripleclicktimeout = 600;
 int allowaltscreen = 1;
 
 /* frames per second st should at maximum draw to the screen */
-static unsigned int xfps = 60;
+static unsigned int xfps = 120;
 static unsigned int actionfps = 60;
 
 /*
@@ -80,35 +80,80 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 4;
+unsigned int tabspaces = 8;
+
+/* bg opacity */
+float alpha = 1;
+float alphaUnfocussed = 1;
 
 /* Terminal colors (16 first used in escape sequence) */
-const char *colorname[] = {
+static const char *colorname[] = {
 	/* 8 normal colors */
-	"#322931",
-	"#dd464c",
-	"#8fc13e",
-	"#fdcc59",
-	"#1290bf",
-	"#c85e7c",
-	"#149b93",
-	"#b9b5b8",
+
+	/* Gray 200 */
+	"#EEEEEE",
+	/* Red 700 */
+	"#D32F2F",
+	/* Green 700 */
+	"#388E3C",
+	/* Yellow 700 */
+	"#FBC02D",
+	/* Blue 700 */
+	"#1976D2",
+	/* Purple 700 */
+	"#7B1FA2",
+	/* Cyan 700 */
+	"#0097A7",
+	/* Gray 700 */
+	/*"#212121",*/
+	"#616161",
+
+	/*
+	"#EEEEEE",
+	"red3",
+	"green3",
+	"yellow3",
+	"blue2",
+	"magenta3",
+	"cyan3",
+	"gray50",
+	*/
 
 	/* 8 bright colors */
-	"#797379",
-	"#dd464c",
-	"#8fc13e",
-	"#fdcc59",
-	"#1290bf",
-	"#c85e7c",
-	"#149b93",
-	"#ffffff",
+
+	/* Blue Gray 700 */
+	"#455A64",
+	/* Red 400 */
+	"#EF5350",
+	/* Green 400 */
+	"#66BB6A",
+	/* Yellow 400 */
+	"#FFEE58",
+	/* Blue 400 */
+	"#42A5F5",
+	/* Purple 400 */
+	"#AB47BC",
+	/* Cyan 400 */
+	"#26C6DA",
+	/* Black */
+	"#000000",
+
+	/*"gray100",
+	"red",
+	"green",
+	"yellow",
+	"#5c5cff",
+	"magenta",
+	"cyan",
+	"black",
+	*/
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
+	"#64B5F6",
+	"#4FC3F7",
+	"black",
 };
 
 
@@ -117,7 +162,7 @@ const char *colorname[] = {
  * foreground, background, cursor, reverse cursor
  */
 unsigned int defaultfg = 7;
-unsigned int defaultbg = 233;
+unsigned int defaultbg = 0;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
@@ -176,10 +221,10 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
-	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	// { TERMMOD,              XK_I,           iso14755,       {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
+	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 };
 
 /*
