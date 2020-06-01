@@ -1,29 +1,37 @@
 #! /bin/sh
 
+#export _JAVA_AWT_WM_NONREPARENTING=1
+export KRITA_NO_STYLE_OVERRIDE=1
+
 sxhkd &
-polybar -r laptop &
-polybar -r vga &
-compton &
-feh --bg-fill ~/Pictures/background2.png &
+MONITOR="DP-2" polybar -r primary &
+MONITOR="HDMI-0" polybar -r secondary &
 
-bspc monitor LVDS1 -d discord terminal firefox code music VI VII VIII IX X
-bspc monitor VGA1 -d code firefox terminal game XV XVI XVII XVIII XIX XX
+xsetroot -solid \#FEFEFE
+xsetroot -cursor_name left_ptr
 
-bspc config border_width        2
-bspc config window_gap          25
-bspc config focused_border_color \#A0A21
-bspc config normal_border_color \#232428
+SCREEN_WIDTH=1920
+SCREEN_HEIGHT=1200
 
-bspc config split_ratio          0.52
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+TABLET_WIDTH=32767
+TABLET_HEIGHT=$((28644 * $SCREEN_HEIGHT / $SCREEN_WIDTH))
 
-bspc rule -a KShare state=floating
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-#bspc rule -a DiscordCanary desktop='^1' && discord &
-#bspc rule -a st-256color desktop='^2' && st &
-#bspc rule -a Firefox desktop='^3' && firefox &
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
-bspc rula -a net-ftb-main-Main state=floating
+xsetwacom set 9 MapToOutput ${SCREEN_WIDTH}x${SCREEN_HEIGHT}+0+0
+#xsetwacom set 9 Area 0 0 $TABLET_WIDTH $TABLET_HEIGHT
+
+bspc monitor DP-2   -d code    terminal game  paint  V  VI  VII steam
+bspc monitor HDMI-0 -d firefox discord  music logs  XV XVI XVII XVIII
+
+bspc config border_width          10
+bspc config window_gap            30
+bspc config normal_border_color   \#EEEEEE
+bspc config active_border_color   \#EEEEEE # \#80D8FF
+bspc config focused_border_color  \#64B5F6  # \#40C4FF
+
+bspc config split_ratio           0.50
+bspc config borderless_monocle    true
+bspc config gapless_monocle       true
+bspc config external_rules_command "./external_rules"
+
+bspc rule -a net-ftb-main-Main state=floating
+

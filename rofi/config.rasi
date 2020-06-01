@@ -1,0 +1,71 @@
+configuration {
+    width: 35;
+    lines: 8;
+    columns: 1;
+    font: "M+ 1p Medium 14";
+    fixed-num-lines: true;
+    show-icons: true;
+    icon-theme: "Papirus-Light";
+    drun-display-format: "{name} [<span weight='light' size='small'>{generic}</span>]";
+    disable-history: true;
+    display-drun: "";
+}
+
+* {
+    background: #F5F5F5;
+    primary: #64B5F6; /*#40C4FF;*/
+
+    textcolor: rgba(0, 0, 0, 0.87);
+    fillcolor: rgba(0, 0, 0, 0.04);
+    radius: 4px;
+
+    background-color: @background;
+    scrollbarcolor: @primary;
+    spacing: 0;
+}
+
+window {
+    padding: 40px 34px 40px 40px;
+    children: [mainbox];
+    hide-scrollbar: false;
+}
+
+listview {
+    padding: 10px 6px 0 0;
+}
+
+mainbox {
+    children: [inputbar, listview];
+}
+
+/*
+window, listview, mainbox, element {
+    background-color: @background;
+}
+*/
+prompt {
+    margin: 4px -12px 0 4px;
+}
+
+prompt, entry {
+    padding: 10px;
+    background-color: transparent;
+    text-color: @textcolor;
+    border-radius: @radius;
+}
+
+inputbar {
+    background-color: @fillcolor;
+    border-radius: @radius;
+}
+
+element {
+    padding: 5px 10px;
+}
+
+element selected { 
+    background-color: @primary;
+    text-color: #FFFFFF;
+}
+
+/* vim:ft=css

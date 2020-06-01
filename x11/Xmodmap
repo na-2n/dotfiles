@@ -1,4 +1,0 @@
-! caps lock -> esc
-clear Lock
-keycode 0x42 = Escape
-

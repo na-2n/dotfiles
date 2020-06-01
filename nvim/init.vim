@@ -1,65 +1,74 @@
-set runtimepath+=/home/yui/.vim/bundle/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
-set number
-set wrap
+set number wrap cursorline list relativenumber
+set bg=light
 
-if dein#load_state('~/.vim/bundle/')
-    call dein#begin('~/.vim/bundle/')
+if dein#load_state('~/.cache/dein')
+    call dein#begin('~/.cache/dein')
+    call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-    call dein#add('~/.vim/bundle/repos/github.com/Shougo/dein.vim')
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('Shougo/neosnippet')
-    call dein#add('Shougo/neosnippet-snippets')
+    " syntax
+    "call dein#add('dense-analysis/ale')
+    call dein#add('tikhomirov/vim-glsl')
+    call dein#add('jiangmiao/auto-pairs')
+    call dein#add('MaxMEllon/vim-jsx-pretty')
     call dein#add('HerringtonDarkholme/yats.vim')
-    call dein#add('mhartington/nvim-typescript', { 'build': './install.sh' })
-    "call dein#add('wakatime/vim-wakatime')
-    call dein#add('fatih/vim-go')
-    call dein#add('zchee/deoplete-jedi')
-    call dein#add('chr4/nginx.vim')
     call dein#add('othree/yajs.vim')
-    call dein#add('udalov/kotlin-vim')
-    call dein#add('mxw/vim-jsx')
-    call dein#add('w0rp/ale')
-    call dein#add('rust-lang/rust.vim')
-    "call dein#add('racer-rust/vim-racer')
-    call dein#add('yuwui/vim-colors-paramount')
-    call dein#add('hdima/python-syntax')
-    call dein#add('Shougo/neoinclude.vim')
-    call dein#add('Shougo/deoplete-clangx')
-    call dein#add('slashmili/alchemist.vim')
+    call dein#add('cakebaker/scss-syntax.vim')
+
+    " autocomplete
+    call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
+
+    " color schemes
+    call dein#add('rakr/vim-one')
+
+    " misc
     call dein#add('aurieh/discord.nvim')
-    call dein#add('vim-ruby/vim-ruby')
-    call dein#add('OrangeT/vim-csharp')
-    call dein#add('SpaceVim/vim-swig')
-    call dein#add('exu/pgsql.vim')
-    call dein#add('monkoose/deoplete-d')
-    "call dein#add('autozimu/LanguageClient-neovim', { 'build': 'bash install.sh' })
-    call dein#add('rhysd/vim-crystal')
-    call dein#add('kana/vim-filetype-haskell')
-    call dein#add('peterhoeg/vim-qml')
-    call dein#add('eagletmt/neco-ghc')
+    "call dein#add('preservim/nerdtree')
 
     call dein#end()
     call dein#save_state()
 endif
 
+
+" NERDTree
+"let g:loaded_nerd_tree = 1
+
+"let g:NERDTreeMinimalUI = 1
+"let g:NERDTreeShowHidden=1
+"let g:NERDTreeWinSize = 25
+
+"autocmd VimEnter * NERDTree
+"autocmd VimEnter * wincmd p
+"autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 let g:deoplete#enable_at_startup = 1
-let python_highlight_all = 1
-let g:deoplete#sources#jedi#python_path='/usr/bin/python3.6'
-let g:ale_linters = { 'cpp': ['cppcheck', 'cpplint', 'g++'], 'python': ['flake8'], 'typescript': ['tslint'] }
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/6.0.1/include/'
-let g:deoplete#sources#d#dcd_server_autostart = 1
-let g:deoplete#sources#d#std_path = '/usr/include/dlang/ldc/'
-let g:LanguageClient_serverCommands = { 'crystal': ['scry'] }
 
-autocmd FileType crystal setlocal tabstop=2 shiftwidth=2
-autocmd FileType yaml setlocal tabstop=2 shiftwidth=2
-autocmd FileType ruby setlocal tabstop=2 shiftwidth=2
-autocmd FileType eruby setlocal tabstop=2 shiftwidth=2
+" ALE
+"let g:ale_completion_tsserver_autoimport = 1
+"let g:ale_fix_on_save = 1
+"let g:ale_sign_column_always = 1
+"let g:ale_fixers = {
+"\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+"\   'javascript': ['eslint'],
+"\}
 
-colorscheme paramount
-set background=dark
+" netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+
+" Vim stuff
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
+
+colorscheme one
+
+nnoremap <Tab> <C-w><C-w>
 filetype plugin indent on
 syntax enable
 
+hi Pmenu ctermfg=7
+hi PmenuSbar ctermbg=251

@@ -1,0 +1,3 @@
+media-video/ffmpeg x264 x265 gnutls opencl openal opus openh264 openssl cuda cpudetection libxml2 libv4l lzma v4l vaapi vdpau libdrm fontconfig twolame libass gcrypt libcaca zimg librtmp modplug jpeg2k vpx webp wavpack gmp gme kvazaar libaom libsoxr libtesseract rubberband vidstab dav1d fdk bluray amr amrenc nvenc
+
+virtual/ffmpeg jpeg2k libav opus vaapi vdpau

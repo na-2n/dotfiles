@@ -1,4 +1,4 @@
 # dotfiles
 
-My voidlinux dotfiles
+My gentoo dotfiles
 
