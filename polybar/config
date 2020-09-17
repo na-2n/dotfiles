@@ -43,10 +43,13 @@ inherit = fonts
 
 monitor = ${env:MONITOR:}
 
-width = 100%:-60
+; 100%:-60
+width = 100%:-40
 height = 50
-offset-x = 30
-offset-y = 30
+; 30
+offset-x = 20
+;30
+offset-y = 20
 
 fixed-center = true
 
@@ -70,7 +73,7 @@ modules-right = volume time date
 [bar/laptop]
 inherit = bar/base
 
-modules-left = workspaces nowplaying
+modules-left = workspaces
 modules-center = window
 modules-right = wifi brightness battery volume-small time date
 

@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "Meslo LG M:pixelsize=15:antialias=true:autohint=true";
-static int borderpx = 30;
+static int borderpx = 20;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -128,7 +128,8 @@ static const char *colorname[] = {
 	/* Green 400 */
 	"#66BB6A",
 	/* Yellow 400 */
-	"#FFEE58",
+        "#FDD835",
+	//"#FFD600",
 	/* Blue 400 */
 	"#42A5F5",
 	/* Purple 400 */

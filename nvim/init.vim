@@ -16,6 +16,11 @@ if dein#load_state('~/.cache/dein')
     call dein#add('HerringtonDarkholme/yats.vim')
     call dein#add('othree/yajs.vim')
     call dein#add('cakebaker/scss-syntax.vim')
+    call dein#add('yaymukund/vim-haxe')
+    call dein#add('jparise/vim-graphql')
+    call dein#add('stephpy/vim-yaml')
+    call dein#add('jxnblk/vim-mdx-js')
+    call dein#add('posva/vim-vue')
 
     " autocomplete
     call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
@@ -24,7 +29,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('rakr/vim-one')
 
     " misc
-    call dein#add('aurieh/discord.nvim')
+    "call dein#add('aurieh/discord.nvim')
     "call dein#add('preservim/nerdtree')
 
     call dein#end()
@@ -69,6 +74,11 @@ colorscheme one
 nnoremap <Tab> <C-w><C-w>
 filetype plugin indent on
 syntax enable
+
+autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
 
 hi Pmenu ctermfg=7
 hi PmenuSbar ctermbg=251
