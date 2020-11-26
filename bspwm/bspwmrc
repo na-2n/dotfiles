@@ -1,14 +1,15 @@
-#! /bin/sh
+#!/bin/sh
 
-#export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_AWT_WM_NONREPARENTING=1
 export KRITA_NO_STYLE_OVERRIDE=1
 
 sxhkd &
-MONITOR="DP-2" polybar -r primary &
+MONITOR="DP-0" polybar -r primary &
 MONITOR="HDMI-0" polybar -r secondary &
 
 xsetroot -solid \#FEFEFE
 xsetroot -cursor_name left_ptr
+xinput set-prop "pointer:Razer Razer Viper Mini" "Coordinate Transformation Matrix" 1 0 0 0 1 0 0 0 1
 
 SCREEN_WIDTH=1920
 SCREEN_HEIGHT=1200
@@ -19,11 +20,11 @@ TABLET_HEIGHT=$((28644 * $SCREEN_HEIGHT / $SCREEN_WIDTH))
 xsetwacom set 9 MapToOutput ${SCREEN_WIDTH}x${SCREEN_HEIGHT}+0+0
 #xsetwacom set 9 Area 0 0 $TABLET_WIDTH $TABLET_HEIGHT
 
-bspc monitor DP-2   -d code    terminal game  paint  V  VI  VII steam
+bspc monitor DP-0   -d code    terminal game  paint  V  VI  VII steam
 bspc monitor HDMI-0 -d firefox discord  music logs  XV XVI XVII XVIII
 
-bspc config border_width          10
-bspc config window_gap            30
+bspc config border_width          4 # 5 # 10
+bspc config window_gap            6 # 20 # 30
 bspc config normal_border_color   \#EEEEEE
 bspc config active_border_color   \#EEEEEE # \#80D8FF
 bspc config focused_border_color  \#64B5F6  # \#40C4FF
