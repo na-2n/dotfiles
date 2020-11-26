@@ -15,10 +15,10 @@ accent = #64B5F6
 
 
 [fonts]
-font-0 = M+ 1p Medium:pixelsize=12;3
-font-1 = FontAwesome 5 Free Solid:pixelsize=12;3
-font-2 = FontAwesome 5 Brands:pixelsize=12;3
-font-3 = M+ 1p Regular:pixelsize=10;3
+font-0 = M+ 1p Medium:pixelsize=10;3
+font-1 = FontAwesome 5 Free Solid:pixelsize=10;3
+font-2 = FontAwesome 5 Brands:pixelsize=10;3
+font-3 = M+ 1p Regular:pixelsize=8;3
 font-4 = Meslo LG M:pixelsize=10;3
 
 
@@ -42,15 +42,21 @@ inherit = fonts
 
 monitor = ${env:MONITOR:}
 
-width = 100%:-60
-height = 50
-offset-x = 30
-offset-y = 30
+; -24 ; -40 ; -60
+width = 100%:-12
+; 50
+height = 40
+; 12 ; 20 ; 30
+offset-x = 6
+; 12 ; 20 ; 30
+offset-y = 6
 
 fixed-center = true
 
-padding = 5
-module-margin = 2.5
+; 5
+padding = 6
+; 2.5
+module-margin = 3
 
 line-size = 4
 line-color = ${colors.accent}
