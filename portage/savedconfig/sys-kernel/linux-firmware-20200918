@@ -1,3 +1,7 @@
+
+amd/amd_sev_fam17h_model0xh.sbin
+amd-ucode/microcode_amd_fam17h.bin.asc
+amd-ucode/microcode_amd_fam17h.bin
 nvidia/tu106/sec2/sig.bin
 nvidia/tu106/sec2/desc.bin
 nvidia/tu106/sec2/image.bin
