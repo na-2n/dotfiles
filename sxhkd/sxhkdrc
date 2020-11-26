@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-    st
+    alacritty
 
 # program launcher
 super + @space
@@ -139,4 +139,7 @@ XF86AudioLowerVolume
 
 XF86AudioRaiseVolume
     amixer -q sset Master 10%+
+
+XF86AudioPlay
+    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
