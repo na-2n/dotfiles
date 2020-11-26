@@ -1,1 +1,4 @@
 dev-util/google-perftools optimisememory
+
+www-client/ungoogled-chromium-bin widevine
+www-client/ungoogled-chromium vdpau vaapi widevine thinlto optimize-webui optimize-thinlto
