@@ -34,4 +34,8 @@ fi
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+
 exec dbus-launch --exit-with-session bspwm
