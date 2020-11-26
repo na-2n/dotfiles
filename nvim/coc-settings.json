@@ -1,0 +1,4 @@
+{
+    "eslint.autoFixOnSave": true,
+    "clangd.semanticHighlighting": false
+}
