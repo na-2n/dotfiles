@@ -108,7 +108,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Meslo LG S
+    #family: Meslo LG S
+    family: Inconsolata
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -147,7 +148,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 11.5
+  size: 14
   #size: 11.5
 
   # Offset is the extra space around each character. `offset.y` can be thought of
@@ -171,34 +172,28 @@ font:
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
-
-# Colors (Tomorrow Night)
+#
+# Colors (Material Theme)
 colors:
-  # Default colors
   primary:
-    background: '#EEEEEE'
-    foreground: '#616161'
-
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '#828482'
-    bright_foreground: '#000000'
-
-  # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor.
-  #
-  # Allowed values are CellForeground and CellBackground, which reference the
-  # affected cell, or hexadecimal colors like #ff00ff.
+    background: '#eeeeee' #'#fafafa'
+    foreground: '#383a42'
   cursor:
-    cursor: '#64B5F6'
-    #cursor: '#F9AC48'
-  #  text: CellBackground
-  #  cursor: CellForeground
-
+    text: '#fafafa'
+    cursor: '#64b5f6' #'#526eff' # syntax-cursor-color
+  selection:
+    text: '#383a42'
+    background: '#e5e5e6' # syntax-selection-color
+  normal:
+    black:      '#696c77' # mono-2
+    red:        '#e45649' # red 1
+    green:      '#50a14f'
+    yellow:     '#c18401' # orange 2
+    blue:       '#4078f2'
+    magenta:    '#a626a4'
+    cyan:       '#0184bc'
+    white:      '#a0a1a7' # mono-3
+    #
   # Vi mode cursor colors
   #
   # Colors for the cursor when the vi mode is active.
@@ -232,56 +227,6 @@ colors:
     #bar:
     #  background: '#c5c8c6'
     #  foreground: '#1d1f21'
-
-  # Normal colors
-  normal:
-    black:   '#EEEEEE'
-    #black:   '#616161'
-    red:     '#D32F2F'
-    green:   '#388E3C'
-    yellow:  '#FBC02D'
-    blue:    '#1976D2'
-    magenta: '#7B1FA2'
-    cyan:    '#0097A7'
-    white:   '#616161'
-    #white:   '#EEEEEE'
-
-  # Bright colors
-  bright:
-    black:   '#455A64'
-    #black:   '#000000'
-    red:     '#EF5350'
-    green:   '#66BB6A'
-    yellow:  '#FDD835'
-    blue:    '#42A5F5'
-    magenta: '#AB47BC'
-    cyan:    '#26C6DA'
-    white:   '#000000'
-    #white:   '#455A64'
-
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '#131415'
-  #  red:     '#864343'
-  #  green:   '#777c44'
-  #  yellow:  '#9e824c'
-  #  blue:    '#556a7d'
-  #  magenta: '#75617b'
-  #  cyan:    '#5b7d78'
-  #  white:   '#828482'
-
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '#ff00ff' }`
-  #
-  #indexed_colors: []
 
 # Bell
 #
@@ -328,7 +273,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-#background_opacity: 1.0
+#background_opacity: 0.80
 
 #selection:
   # This string contains all characters that are used as separators for "semantic words" in Alacritty.

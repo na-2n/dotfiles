@@ -7,11 +7,7 @@ media-player = spotify
 [colors]
 background = #EEEEEE
 foreground = #424242
-; Blue 300
 accent = #64B5F6
-;#00B0FF
-;#29B6F6
-; #40C4FF
 
 
 [fonts]
@@ -19,7 +15,8 @@ font-0 = M+ 1p Medium:pixelsize=10;3
 font-1 = FontAwesome 5 Free Solid:pixelsize=10;3
 font-2 = FontAwesome 5 Brands:pixelsize=10;3
 font-3 = M+ 1p Regular:pixelsize=8;3
-font-4 = Meslo LG M:pixelsize=10;3
+font-4 = Inconsolata:pixelsize=11.5;3
+;font-5 = Meslo LG M:pixelsize=10;3
 
 
 [workspace-icons]
@@ -42,20 +39,10 @@ inherit = fonts
 
 monitor = ${env:MONITOR:}
 
-; -24 ; -40 ; -60
-width = 100%:-12
-; 50
 height = 40
-; 12 ; 20 ; 30
-offset-x = 6
-; 12 ; 20 ; 30
-offset-y = 6
-
 fixed-center = true
 
-; 5
-padding = 6
-; 2.5
+padding = 3
 module-margin = 3
 
 line-size = 4
@@ -76,7 +63,8 @@ modules-right = volume time date
 [bar/primary]
 inherit = bar/base
 
-modules-left = workspaces nowplaying
+modules-left = workspaces 
+;nowplaying
 modules-center = window
 modules-right = volume time date
 
@@ -109,7 +97,7 @@ type = internal/xwindow
 
 label = "  %title%  "
 ;label-underline = #FF
-label-maxlen = 30
+label-maxlen = 50
 
 
 [module/nowplaying]
@@ -158,6 +146,10 @@ type = internal/date
 
 time = %I:%M %p
 time-alt = %H:%M:%S
+
+;label-underline = #1976D2
+;label-foreground = #FFFFFF
+;label-background = ${colors.accent}
 
 label = "  %time%  "
 label-underline = #FF

@@ -1,7 +1,7 @@
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 set splitbelow splitright
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set number wrap cursorline list relativenumber
+set cursorline
 set bg=light
 set updatetime=300
 set shortmess+=c
@@ -16,41 +16,30 @@ if (empty($TMUX))
         set termguicolors
     endif
 endif
+   
+call plug#begin('~/.config/nvim/plugged')
 
-if dein#load_state('~/.cache/dein')
-    call dein#begin('~/.cache/dein')
-    call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+Plug 'tikhomirov/vim-glsl'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'othree/yajs.vim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'jparise/vim-graphql'
+Plug 'yaymukund/vim-haxe'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'jsutlovic/vim-csharp'
+Plug 'neovimhaskell/haskell-vim'
 
-    " syntax
-    call dein#add('tikhomirov/vim-glsl')
-    call dein#add('MaxMEllon/vim-jsx-pretty')
-    call dein#add('HerringtonDarkholme/yats.vim')
-    call dein#add('othree/yajs.vim')
-    call dein#add('cakebaker/scss-syntax.vim')
-    call dein#add('jparise/vim-graphql')
-    call dein#add('stephpy/vim-yaml')
-    call dein#add('yaymukund/vim-haxe')
-    call dein#add('jackguo380/vim-lsp-cxx-highlight')
-    call dein#add('jsutlovic/vim-csharp')
-    call dein#add('neovimhaskell/haskell-vim')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'sgur/vim-editorconfig'
 
-    " autocomplete
-    call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
-    "
-    " color schemes
-    call dein#add('rakr/vim-one')
+Plug 'rakr/vim-one'
 
-    " misc
-    call dein#add('vim-airline/vim-airline')
-    call dein#add('jiangmiao/auto-pairs')
+Plug 'vim-airline/vim-airline'
+Plug 'jiangmiao/auto-pairs'
 
-    call dein#end()
-    call dein#save_state()
-endif
-
-" timewarrior
-"autocmd VimEnter !timew start
-"autocmd VimLeave !timew stop
+call plug#end()
 
 " netrw
 let g:netrw_banner = 0
@@ -62,11 +51,6 @@ let g:one_allow_italics = 1
 colorscheme one
 filetype plugin indent on
 syntax enable
-
-call one#highlight('Normal', '', 'EEEEEE', 'none')
-call one#highlight('SignColumn', '', 'EEEEEE', 'none')
-call one#highlight('CursorLineNr', '', 'DEDEDE', 'none')
-call one#highlight('CursorLine', '', 'DEDEDE','none')
 
 " Vim stuff
 nnoremap <M-h> <C-w>h

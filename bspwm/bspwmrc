@@ -3,7 +3,10 @@
 export _JAVA_AWT_WM_NONREPARENTING=1
 export KRITA_NO_STYLE_OVERRIDE=1
 
+#~/.fehbg &
 sxhkd &
+#picom &
+unclutter -idle 3 &
 MONITOR="DP-0" polybar -r primary &
 MONITOR="HDMI-0" polybar -r secondary &
 

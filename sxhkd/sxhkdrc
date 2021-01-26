@@ -125,7 +125,7 @@ super + {Left,Down,Up,Right}
 #
 
 ctrl + Print
-    flameshot gui -r > /tmp/upload.png && owo /tmp/upload.png && rm /tmp/upload.png
+    flameshot gui -r > /tmp/upload.png && owo /tmp/upload.png | xclip -selection clipboard
 
 #
 # Media keys
