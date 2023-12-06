@@ -1,0 +1,10 @@
+{
+    "languageserver": {
+        "kotlin": {
+            "command": "~/.local/share/lsp/kotlin/server/bin/kotlin-language-server",
+            "filetypes": ["kotlin"]
+        }
+    },
+    "suggest.noselect": true,
+    "clangd.path": "/usr/local/bin/clangd15"
+}

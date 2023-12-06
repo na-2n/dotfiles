@@ -3,22 +3,25 @@
 export _JAVA_AWT_WM_NONREPARENTING=1
 export KRITA_NO_STYLE_OVERRIDE=1
 
-sxhkd &
-fcitx &
-MONITOR="LVDS1" polybar -r laptop &
-MONITOR="VGA1" polybar -r laptop &
-
-xsetroot -solid \#FEFEFE
 xsetroot -cursor_name left_ptr
+xset r rate 330 30
+feh --no-fehbg --bg-fill ~/Pictures/88896321_p3_16x10.png
 
-bspc monitor LVDS1 -d discord  terminal code    firefox music VI VII VIII IX X
-bspc monitor VGA1  -d terminal code     firefox IV      V     VI VII VIII IX X
+#sxhkd &
+xcompmgr &
+fcitx5 &
+bspwmbar &
+unclutter -idle 3 &
+~/Projects/system/ssss/batwarn.sh &
 
-bspc config border_width          5 # 10
-bspc config window_gap            20 # 30
+bspc monitor LVDS-1 -d I II III IV V VI VII VIII IX X
+
+bspc config border_width          2 # 10
+bspc config window_gap            8 # 30
 bspc config normal_border_color   \#EEEEEE
 bspc config active_border_color   \#EEEEEE
-bspc config focused_border_color  \#64B5F6
+bspc config focused_border_color  \#e5c07b #\#FCFC1E
+#bspc config focused_border_color  \#64B5F6
 
 bspc config split_ratio           0.50
 bspc config borderless_monocle    true

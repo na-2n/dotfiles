@@ -1,0 +1,23 @@
+[Groups/0]
+# Group Name
+Name=Default
+# Layout
+Default Layout=jp
+# Default Input Method
+DefaultIM=anthy
+
+[Groups/0/Items/0]
+# Name
+Name=keyboard-jp
+# Layout
+Layout=
+
+[Groups/0/Items/1]
+# Name
+Name=anthy
+# Layout
+Layout=
+
+[GroupOrder]
+0=Default
+

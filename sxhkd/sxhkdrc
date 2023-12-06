@@ -19,8 +19,8 @@ super + Escape
 #
 
 # quit bspwm normally
-super + alt + Escape
-    bspc quit
+super + alt + {q,r}
+    bspc {quit,wm -r}
 
 # close and kill
 super + {_,shift + }w
@@ -124,19 +124,16 @@ super + {Left,Down,Up,Right}
 # Screenshots
 #
 
-ctrl + Print
-    flameshot gui -r > /tmp/upload.png && owo /tmp/upload.png && rm /tmp/upload.png
+super + Print
+    flameshot gui
 
 #
 # Media keys
 #
 
-XF86AudioMute
-    amixer -q sset Master toggle
+XF86AudioRaiseVolume
+	mixer vol +5
 
 XF86AudioLowerVolume
-    amixer -q sset Master 10%-
-
-XF86AudioRaiseVolume
-    amixer -q sset Master 10%+
+	mixer vol -5
 

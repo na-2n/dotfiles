@@ -1,17 +1,15 @@
-# .bash_profile
+# /etc/skel/.bash_profile
+
+# This file is sourced by bash for login shells.  The following line
+# runs your .bashrc and is recommended by the bash info pages.
+if [[ -f ~/.bashrc ]] ; then
+    . ~/.bashrc
+fi
 
 export EDITOR=nvim
+
+export JAVA_VERSION=17
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-# Get the aliases and functions
-[ -f $HOME/.bashrc ] && . $HOME/.bashrc
+export PATH=$PATH:$HOME/.local/bin
 
-[ -f $HOME/.cargo/env ] && . $HOME/.cargo/env
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-export PATH=$PATH:/home/yui/.dvm/sym
-export PATH=$PATH:/home/yui/.kotlin-native/linux/bin
-export PATH=$PATH:/home/yui/.deno/bin
-export PATH=$PATH:/home/yui/.yarn/bin
-export PATH=$PATH:/home/yui/.dotnet/tools # Add .NET Core SDK tools

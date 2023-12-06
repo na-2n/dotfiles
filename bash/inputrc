@@ -2,3 +2,5 @@ $include /etc/inputrc
 
 set enable-keypad on
 set completion-ignore-case on
+set editing-mode vi
+set keymap vi-command

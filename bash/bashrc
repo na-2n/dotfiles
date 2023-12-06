@@ -14,19 +14,12 @@ if [[ $- != *i* ]] ; then
     return
 fi
 
-
-# Put your fun stuff here.
-
 shopt -s globstar
+set -o vi
 
-alias cat='bat --theme=OneHalfLight'
-alias grep='grep --color=auto'
-alias ls='ls --color=auto -A'
-alias rm='rm -v'
-alias cp='cp -v'
-alias mv='mv -v'
-alias mkdir='mkdir -pv'
-alias emerge='emerge --ask'
+alias cat='bat --theme=OneHalfDark'
+alias grep='grep --color=always'
+alias ls='ls --color=always'
 
 RESET="\001\e[0m\002"
 BOLD="\001\e[1m\002"
@@ -74,5 +67,5 @@ exit_code() {
     fi
 }
 
-PS1="${BOLD}${WHITE}\$(exit_code) \w\$(vcs_info) ${RESET}${PINK}\$${RESET} "
+PS1="${BOLD}${WHITE}\$(exit_code) \w ${RESET}${PINK}\$${RESET} "
 
